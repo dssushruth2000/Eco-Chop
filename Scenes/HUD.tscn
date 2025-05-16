@@ -1,0 +1,41 @@
+[gd_scene load_steps=2 format=3 uid="uid://u1fnalqhpeuq"]
+
+[ext_resource type="Script" path="res://Scripts/HUD.gd" id="1_40mrl"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_40mrl")
+
+[node name="OxygenLabel" type="Label" parent="."]
+offset_left = 5.0
+offset_top = -3.0
+offset_right = 126.0
+offset_bottom = 25.0
+theme_override_font_sizes/font_size = 18
+text = "Oxygen: 0%"
+uppercase = true
+
+[node name="NitrogenLabel" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 21.0
+offset_right = 130.0
+offset_bottom = 49.0
+theme_override_font_sizes/font_size = 18
+text = "Nitrogen: 0%"
+
+[node name="CO2Label" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 47.0
+offset_right = 102.0
+offset_bottom = 75.0
+theme_override_font_sizes/font_size = 18
+text = "CO2: 0%"
+uppercase = true
+
+[node name="OthersLabel" type="Label" parent="."]
+offset_left = 5.0
+offset_top = 70.0
+offset_right = 122.0
+offset_bottom = 98.0
+theme_override_font_sizes/font_size = 18
+text = "Others: 0%"
+uppercase = true

@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://pp452ak1ji1y"]
+
+[ext_resource type="PackedScene" uid="uid://bu8r8dutwanls" path="res://Scenes/Tree.tscn" id="1_h1230"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_mkamr"]
+[ext_resource type="Script" path="res://Scripts/RaycastSelection.gd" id="2_dy6lh"]
+
+[node name="RaycastSelectionScene" type="Node3D"]
+script = ExtResource("1_mkamr")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(-1, 0, -0.00052348, 0, 1, 0, 0.00052348, 0, -1, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/XRCamera3D"]
+target_position = Vector3(0, 0, -10)
+script = ExtResource("2_dy6lh")
+
+[node name="Tree" parent="." instance=ExtResource("1_h1230")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06828, 0, -2.21151)

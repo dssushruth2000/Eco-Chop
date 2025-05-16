@@ -1,0 +1,116 @@
+[gd_scene load_steps=18 format=3 uid="uid://cv7w8t63kcgk3"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_oh3hr"]
+[ext_resource type="Script" path="res://Scripts/TeleportationFinalDirection.gd" id="2_fcebd"]
+[ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://assests/Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="3_ljyy3"]
+[ext_resource type="Material" path="res://Materials/red_laser.tres" id="4_61ahi"]
+[ext_resource type="Script" path="res://Scripts/LineRenderer.gd" id="5_ii36w"]
+[ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://assests/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="7_fnum5"]
+[ext_resource type="Material" path="res://Materials/blue_laser.tres" id="8_8ppk2"]
+[ext_resource type="PackedScene" uid="uid://u1fnalqhpeuq" path="res://Scenes/HUD.tscn" id="9_hlnyk"]
+[ext_resource type="PackedScene" uid="uid://bu8r8dutwanls" path="res://Scenes/Tree.tscn" id="10_m7shn"]
+[ext_resource type="Material" uid="uid://djg74owfkygcs" path="res://Materials/grass.tres" id="11_2cgr0"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_i062y"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_c3t8v"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g2xqf"]
+viewport_path = NodePath("XROrigin3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4i73q"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_g2xqf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cvann"]
+resource_local_to_scene = true
+resource_name = "ui"
+material = SubResource("StandardMaterial3D_4i73q")
+size = Vector2(0.5, 0.5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sk7c0"]
+size = Vector3(25, 0.2, 25)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mnhb1"]
+material = ExtResource("11_2cgr0")
+size = Vector3(25, 0.2, 25)
+
+[node name="TeleportationSceneRoot" type="Node3D"]
+script = ExtResource("1_oh3hr")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(-1, 0, -0.00052348, 0, 1, 0, 0.00052348, 0, -1, 0, 0, 0)
+
+[node name="RightController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+script = ExtResource("2_fcebd")
+
+[node name="OculusQuest2TouchController_Right" parent="XROrigin3D/RightController" instance=ExtResource("3_ljyy3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="RightLaserSword" type="MeshInstance3D" parent="XROrigin3D/RightController"]
+material_override = ExtResource("4_61ahi")
+mesh = SubResource("ImmediateMesh_i062y")
+script = ExtResource("5_ii36w")
+startThickness = 0.01
+endThickness = 0.001
+
+[node name="RightSwordRayCast3D" type="RayCast3D" parent="XROrigin3D/RightController/RightLaserSword"]
+target_position = Vector3(0, 0, -5)
+
+[node name="LeftController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+
+[node name="OculusQuest2TouchController_Left" parent="XROrigin3D/LeftController" instance=ExtResource("7_fnum5")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="LeftLaserSword" type="MeshInstance3D" parent="XROrigin3D/LeftController"]
+material_override = ExtResource("8_8ppk2")
+mesh = SubResource("ImmediateMesh_c3t8v")
+script = ExtResource("5_ii36w")
+startThickness = 0.01
+endThickness = 0.001
+
+[node name="LeftSwordRayCast3D" type="RayCast3D" parent="XROrigin3D/LeftController/LeftLaserSword"]
+target_position = Vector3(0, 0, -5)
+
+[node name="SubViewport" type="SubViewport" parent="XROrigin3D"]
+transparent_bg = true
+size = Vector2i(150, 100)
+
+[node name="HUD" parent="XROrigin3D/SubViewport" instance=ExtResource("9_hlnyk")]
+
+[node name="Tree" parent="." instance=ExtResource("10_m7shn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.57301, 0, -3.86631)
+
+[node name="Tree2" parent="." instance=ExtResource("10_m7shn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.15258, 0, -4.07368)
+
+[node name="Tree3" parent="." instance=ExtResource("10_m7shn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.52069, 0, -1.39573)
+
+[node name="Tree4" parent="." instance=ExtResource("10_m7shn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.67979, 0, -0.308724)
+
+[node name="Tree5" parent="." instance=ExtResource("10_m7shn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.13971, 0, -2.43857)
+
+[node name="HUDPlane" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0.448089, 0, -5.69949)
+mesh = SubResource("PlaneMesh_cvann")
+
+[node name="Floor" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.40862, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.58904, -1.70871)
+shape = SubResource("BoxShape3D_sk7c0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.58904, -1.70871)
+mesh = SubResource("BoxMesh_mnhb1")
+
+[connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/RightController" method="_on_right_controller_button_pressed"]
+[connection signal="button_pressed" from="XROrigin3D/LeftController" to="XROrigin3D/LeftController" method="_on_left_controller_button_pressed"]

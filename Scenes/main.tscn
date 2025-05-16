@@ -1,0 +1,618 @@
+[gd_scene load_steps=61 format=3 uid="uid://btga22oej5qia"]
+
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_5shs8"]
+[ext_resource type="Script" path="res://Scripts/walking.gd" id="2_fnqlp"]
+[ext_resource type="Texture2D" uid="uid://4gfvye0yag4w" path="res://Materials/misty_pines_4k.hdr" id="3_4jq20"]
+[ext_resource type="PackedScene" uid="uid://cb16ia5484gia" path="res://Scenes/PopupChain.tscn" id="4_uabfo"]
+[ext_resource type="Script" path="res://Scripts/right_controller_main.gd" id="4_ynoo7"]
+[ext_resource type="PackedScene" uid="uid://d1tl07geqm5xq" path="res://addons/godot-xr-tools/hands/scenes/highpoly/right_fullglove_hand.tscn" id="5_0tmea"]
+[ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://assests/Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="6_swicj"]
+[ext_resource type="PackedScene" uid="uid://d1ljpjbmk5jxg" path="res://Materials/Axe/gltf/axe01.gltf" id="7_yxko3"]
+[ext_resource type="Material" uid="uid://cok122xah8t5o" path="res://Materials/sword/red_laser.tres" id="9_trbbr"]
+[ext_resource type="Script" path="res://Scripts/LineRenderer.gd" id="10_jhl53"]
+[ext_resource type="Script" path="res://Scripts/left_controller_main.gd" id="11_n1yyx"]
+[ext_resource type="PackedScene" uid="uid://bl2nuu3qhlb5k" path="res://addons/godot-xr-tools/functions/movement_direct.tscn" id="11_ra4sj"]
+[ext_resource type="PackedScene" uid="uid://b6bk2pj8vbj28" path="res://addons/godot-xr-tools/functions/movement_turn.tscn" id="11_ui1na"]
+[ext_resource type="PackedScene" uid="uid://bpdj5njb8nhot" path="res://addons/godot-xr-tools/hands/scenes/highpoly/left_fullglove_hand.tscn" id="12_q1jfu"]
+[ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://assests/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="13_rbrt3"]
+[ext_resource type="Material" uid="uid://cgo4xow407bh4" path="res://Materials/sword/blue_laser.tres" id="14_k8bus"]
+[ext_resource type="PackedScene" uid="uid://b1ak50hk12y8g" path="res://Scenes/menu_with_phone_restart.tscn" id="16_1jvop"]
+[ext_resource type="PackedScene" uid="uid://fiul51tsyoop" path="res://addons/godot-xr-tools/functions/function_teleport.tscn" id="16_nua2e"]
+[ext_resource type="PackedScene" uid="uid://u1fnalqhpeuq" path="res://Scenes/HUD.tscn" id="17_iefrr"]
+[ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="18_n8h6s"]
+[ext_resource type="Material" uid="uid://bgd52v7bonr6u" path="res://Materials/grass4k.tres" id="19_d3hra"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter.gd" id="20_w212l"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="21_3r6gr"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="22_00x2h"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="23_osoab"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="24_8acfm"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="25_xqepw"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/modifiers/project_on_geometry.gd" id="26_xttob"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_item.gd" id="27_0vpac"]
+[ext_resource type="Material" uid="uid://bn3fr3m3glrnp" path="res://addons/proton_scatter/demos/assets/materials/m_bush.tres" id="28_chsu5"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/scatter_shape.gd" id="29_0e6ra"]
+[ext_resource type="Script" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="30_16l2j"]
+[ext_resource type="Material" uid="uid://c4mot1fo3siox" path="res://addons/proton_scatter/demos/assets/materials/m_grass.tres" id="31_gtoci"]
+[ext_resource type="Material" uid="uid://i0jgjmbbl2m5" path="res://addons/proton_scatter/demos/assets/materials/m_rock.tres" id="32_wk43p"]
+[ext_resource type="PackedScene" uid="uid://bx6ymwd15k6sn" path="res://Scenes/maple_tree.tscn" id="33_qo25d"]
+[ext_resource type="AudioStream" uid="uid://bk1jlp8x485xi" path="res://Materials/birds_singing_forest.mp3" id="34_cdxmc"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_ksu1f"]
+panorama = ExtResource("3_4jq20")
+
+[sub_resource type="Sky" id="Sky_oeioi"]
+sky_material = SubResource("PanoramaSkyMaterial_ksu1f")
+
+[sub_resource type="Environment" id="Environment_srj8p"]
+background_mode = 2
+sky = SubResource("Sky_oeioi")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g2xqf"]
+viewport_path = NodePath("XROrigin3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4i73q"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_g2xqf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cvann"]
+resource_local_to_scene = true
+resource_name = "ui"
+material = SubResource("StandardMaterial3D_4i73q")
+size = Vector2(0.25, 0.2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xgwm8"]
+size = Vector3(0.019, 0.144922, 0.232859)
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_bvxbi"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_c3t8v"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sk7c0"]
+size = Vector3(250, 0.2, 250)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mnhb1"]
+material = ExtResource("19_d3hra")
+size = Vector3(250, 0.2, 250)
+
+[sub_resource type="Resource" id="Resource_lta2u"]
+script = ExtResource("23_osoab")
+amount = 200
+enabled = true
+override_global_seed = false
+custom_seed = 10000
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_7ms50"]
+script = ExtResource("24_8acfm")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(20, 360, 20)
+scale = Vector3(0.5, 0.5, 0.5)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_n1d1l"]
+script = ExtResource("25_xqepw")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = false
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_h05jx"]
+script = ExtResource("26_xttob")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_2kvo4"]
+script = ExtResource("21_3r6gr")
+stack = Array[ExtResource("22_00x2h")]([SubResource("Resource_lta2u"), SubResource("Resource_7ms50"), SubResource("Resource_n1d1l"), SubResource("Resource_h05jx")])
+
+[sub_resource type="Resource" id="Resource_g8bsm"]
+script = ExtResource("30_16l2j")
+radius = 30.0293
+
+[sub_resource type="Resource" id="Resource_qgf7o"]
+script = ExtResource("23_osoab")
+amount = 2000
+enabled = true
+override_global_seed = false
+custom_seed = 10000
+restrict_height = true
+reference_frame = 1
+
+[sub_resource type="Resource" id="Resource_8ytjg"]
+script = ExtResource("24_8acfm")
+position = Vector3(0.15, 0.15, 0.15)
+rotation = Vector3(20, 360, 20)
+scale = Vector3(0.5, 0.5, 0.5)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_22veh"]
+script = ExtResource("25_xqepw")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = false
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_br1ep"]
+script = ExtResource("26_xttob")
+ray_direction = Vector3(0, -1, 0)
+ray_length = 5.0
+ray_offset = 5.0
+remove_points_on_miss = false
+align_with_collision_normal = false
+max_slope = 90.0
+collision_mask = 1
+exclude_mask = 0
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_5hbf0"]
+script = ExtResource("21_3r6gr")
+stack = Array[ExtResource("22_00x2h")]([SubResource("Resource_qgf7o"), SubResource("Resource_8ytjg"), SubResource("Resource_22veh"), SubResource("Resource_br1ep")])
+
+[sub_resource type="Resource" id="Resource_vp20o"]
+script = ExtResource("30_16l2j")
+radius = 119.611
+
+[sub_resource type="Resource" id="Resource_un471"]
+script = ExtResource("30_16l2j")
+radius = 30.1309
+
+[node name="Walking" type="Node3D"]
+script = ExtResource("1_5shs8")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+script = ExtResource("2_fnqlp")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="XROrigin3D"]
+environment = SubResource("Environment_srj8p")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+
+[node name="HUDPlane" type="MeshInstance3D" parent="XROrigin3D/XRCamera3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.5, 0, -1.5)
+mesh = SubResource("PlaneMesh_cvann")
+skeleton = NodePath("../../..")
+
+[node name="PopupChain" parent="XROrigin3D/XRCamera3D" instance=ExtResource("4_uabfo")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0, 0.305153, -3.51802)
+visible = false
+
+[node name="RightController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+script = ExtResource("4_ynoo7")
+
+[node name="RightHand" parent="XROrigin3D/RightController" instance=ExtResource("5_0tmea")]
+
+[node name="OculusQuest2TouchController_Right" parent="XROrigin3D/RightController" instance=ExtResource("6_swicj")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="axe01" parent="XROrigin3D/RightController" instance=ExtResource("7_yxko3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.012378, -0.183238, 0.0474397)
+
+[node name="Area3D" type="Area3D" parent="XROrigin3D/RightController/axe01"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="XROrigin3D/RightController/axe01/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00372314, 0.430449, 0.0334677)
+shape = SubResource("BoxShape3D_xgwm8")
+
+[node name="RightLaserSword" type="MeshInstance3D" parent="XROrigin3D/RightController"]
+material_override = ExtResource("9_trbbr")
+mesh = SubResource("ImmediateMesh_bvxbi")
+script = ExtResource("10_jhl53")
+startThickness = 0.01
+endThickness = 0.001
+
+[node name="RightSwordRayCast3D" type="RayCast3D" parent="XROrigin3D/RightController/RightLaserSword"]
+collide_with_areas = true
+
+[node name="MovementDirect" parent="XROrigin3D/RightController" instance=ExtResource("11_ra4sj")]
+max_speed = 2.0
+
+[node name="MovementTurn" parent="XROrigin3D/RightController" instance=ExtResource("11_ui1na")]
+turn_mode = 2
+smooth_turn_speed = 0.7
+step_turn_angle = 5.0
+
+[node name="LeftController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+script = ExtResource("11_n1yyx")
+
+[node name="LeftHand" parent="XROrigin3D/LeftController" instance=ExtResource("12_q1jfu")]
+
+[node name="OculusQuest2TouchController_Left" parent="XROrigin3D/LeftController" instance=ExtResource("13_rbrt3")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="LeftLaserSword" type="MeshInstance3D" parent="XROrigin3D/LeftController"]
+visible = false
+material_override = ExtResource("14_k8bus")
+mesh = SubResource("ImmediateMesh_c3t8v")
+script = ExtResource("10_jhl53")
+
+[node name="LeftSwordRayCast3D" type="RayCast3D" parent="XROrigin3D/LeftController/LeftLaserSword"]
+target_position = Vector3(0, 0, -5)
+collide_with_areas = true
+
+[node name="FunctionTeleport" parent="XROrigin3D/LeftController" instance=ExtResource("16_nua2e")]
+
+[node name="DiegeticMenu" parent="XROrigin3D/LeftController" instance=ExtResource("16_1jvop")]
+transform = Transform3D(-4.10753e-08, 1.49502e-08, -1, 0.34202, 0.939693, 0, 0.939693, -0.34202, -4.37114e-08, 0.135, -0.28, 0.204)
+
+[node name="SubViewport" type="SubViewport" parent="XROrigin3D"]
+transparent_bg = true
+size = Vector2i(150, 100)
+
+[node name="HUD" parent="XROrigin3D/SubViewport" instance=ExtResource("17_iefrr")]
+follow_viewport_enabled = true
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="XROrigin3D"]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+sky_mode = 2
+
+[node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("18_n8h6s")]
+collision_mask = 2
+push_rigid_bodies = false
+
+[node name="Floor" type="StaticBody3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.105601, 0)
+shape = SubResource("BoxShape3D_sk7c0")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.105601, 0)
+mesh = SubResource("BoxMesh_mnhb1")
+
+[node name="Tree" type="Node3D" parent="."]
+
+[node name="Tree1" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.5343, 0, -15.3658)
+
+[node name="Tree2" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.71372, 0, 20.6501)
+
+[node name="Tree3" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.02236, 0, -19.7663)
+
+[node name="Tree4" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.20079, 0, 20.5785)
+
+[node name="Tree5" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.4915, 0, -9.57236)
+
+[node name="Tree6" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.51633, 0, -1.46081)
+
+[node name="Tree7" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5529, 0, 12.4518)
+
+[node name="Tree8" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.9566, 0, -18.1787)
+
+[node name="Tree9" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8099, 0, 12.7593)
+
+[node name="Tree10" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.105, 0, -0.703236)
+
+[node name="Tree11" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.94164, 0, 10.5477)
+
+[node name="Tree12" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.41455, 0, 7.57432)
+
+[node name="Tree13" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.31047, 0, 26.5743)
+
+[node name="Tree14" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.97593, 0, 19.4727)
+
+[node name="Tree43" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -90.9577, 0, 13.2076)
+
+[node name="Tree44" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 84.1908, 0, -2.29042)
+
+[node name="Tree45" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0241, 0, 19.4727)
+
+[node name="Tree46" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0241, 0, -1.5273)
+
+[node name="Tree47" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.0241, 0, -19.5273)
+
+[node name="Tree48" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.9759, 0, -19.5273)
+
+[node name="Tree49" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.9759, 0, 14.4727)
+
+[node name="Tree15" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.27514, 0, -4.99962)
+
+[node name="Tree50" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.27514, 0, -37.9996)
+
+[node name="Tree51" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.27514, 0, -71.9996)
+
+[node name="Tree52" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.7249, 0, -71.9996)
+
+[node name="Tree53" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.7249, 0, -50.9996)
+
+[node name="Tree54" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.7873, 0, -50.2484)
+
+[node name="Tree55" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.9267, 0, 37.6857)
+
+[node name="Tree77" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 107.072, 0, -4.55094)
+
+[node name="Tree56" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.2751, 0, 20.0004)
+
+[node name="Tree57" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.2751, 0, 52.0004)
+
+[node name="Tree58" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.2751, 0, 86.0004)
+
+[node name="Tree59" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.7249, 0, -19.9996)
+
+[node name="Tree60" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.7249, 0, 63.0004)
+
+[node name="Tree61" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.7249, 0, -21.4463)
+
+[node name="Tree62" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.7249, 0, 50.3899)
+
+[node name="Tree63" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.3198, 0, 50.3899)
+
+[node name="Tree64" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.3198, 0, 79.8151)
+
+[node name="Tree65" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.7766, 0, 79.8151)
+
+[node name="Tree66" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.8351, 0, 79.8151)
+
+[node name="Tree67" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.22332, 0, 100.798)
+
+[node name="Tree68" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5259, 0, 65.0229)
+
+[node name="Tree69" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8764, 0, -12.5756)
+
+[node name="Tree70" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 36.8764, 0, -31.7236)
+
+[node name="Tree71" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5606, 0, -9.89178)
+
+[node name="Tree72" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5606, 0, -24.8124)
+
+[node name="Tree73" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.632, 0, -52.1584)
+
+[node name="Tree74" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 90.59, 0, -52.1584)
+
+[node name="Tree75" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -77.6729, 0, -52.1584)
+
+[node name="Tree16" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.39575, 0, 1.24689)
+
+[node name="Tree17" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81713, 0, 1.76132)
+
+[node name="Tree18" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.64829, 0, 12.1903)
+
+[node name="Tree19" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2727, 0, 22.1762)
+
+[node name="Tree20" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.2945, 0, 22.1896)
+
+[node name="Tree21" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6012, 0, -18.1787)
+
+[node name="Tree76" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.6012, 0, -100.616)
+
+[node name="Tree36" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.0688, 0, 71.546)
+
+[node name="Tree37" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.9644, 0, 14.4267)
+
+[node name="Tree22" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2962, 0, -10.966)
+
+[node name="Tree23" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2962, 0, -2.68723)
+
+[node name="Tree24" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.2962, 0, 10.2418)
+
+[node name="Tree25" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.7446, 0, 6.44365)
+
+[node name="Tree26" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.7446, 0, 6.44365)
+
+[node name="Tree27" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.2554, 0, 6.44365)
+
+[node name="Tree28" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2554, 0, 25.4436)
+
+[node name="Tree29" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2554, 0, -27.5564)
+
+[node name="Tree30" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.2554, 0, 37.4436)
+
+[node name="Tree31" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.2554, 0, 37.4436)
+
+[node name="Tree32" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 83.8195, 0, 37.4436)
+
+[node name="Tree33" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.2554, 0, 25.4436)
+
+[node name="Tree34" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2554, 0, 29.4436)
+
+[node name="Tree35" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.5301, 0, -97.4795)
+
+[node name="Tree38" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2554, 0, -28.5564)
+
+[node name="Tree39" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7446, 0, 50.4436)
+
+[node name="Tree40" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -99.1863, 0, 50.4436)
+
+[node name="Tree41" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2554, 0, 33.4436)
+
+[node name="Tree42" parent="Tree" instance=ExtResource("33_qo25d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.2554, 0, 6.44365)
+
+[node name="ForestMusicPlayer" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("34_cdxmc")
+attenuation_model = 3
+volume_db = -5.0
+unit_size = 100.0
+autoplay = true
+
+[node name="ProtonScatter" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.106, 0)
+script = ExtResource("20_w212l")
+modifier_stack = SubResource("Resource_2kvo4")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+
+[node name="bushes" type="Node3D" parent="ProtonScatter"]
+script = ExtResource("27_0vpac")
+override_material = ExtResource("28_chsu5")
+path = "res://addons/proton_scatter/demos/assets/bush.tscn"
+
+[node name="ScatterShape" type="Node3D" parent="ProtonScatter"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0.352632, -1.61937, 0.96064)
+script = ExtResource("29_0e6ra")
+shape = SubResource("Resource_g8bsm")
+
+[node name="grass" type="Node3D" parent="ProtonScatter"]
+script = ExtResource("27_0vpac")
+override_material = ExtResource("31_gtoci")
+path = "res://addons/proton_scatter/demos/assets/grass.tscn"
+
+[node name="small_rocks" type="Node3D" parent="ProtonScatter"]
+script = ExtResource("27_0vpac")
+override_material = ExtResource("32_wk43p")
+path = "res://addons/proton_scatter/demos/assets/small_rock.tscn"
+
+[node name="trees" type="Node3D" parent="ProtonScatter"]
+script = ExtResource("27_0vpac")
+path = "res://addons/proton_scatter/demos/assets/pine_tree.tscn"
+
+[node name="ProtonScatter2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.3916, -0.106, 0)
+script = ExtResource("20_w212l")
+modifier_stack = SubResource("Resource_5hbf0")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+
+[node name="bushes" type="Node3D" parent="ProtonScatter2"]
+script = ExtResource("27_0vpac")
+override_material = ExtResource("28_chsu5")
+path = "res://addons/proton_scatter/demos/assets/bush.tscn"
+
+[node name="ScatterShape" type="Node3D" parent="ProtonScatter2"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 42.958, -1.61937, 0.176889)
+script = ExtResource("29_0e6ra")
+shape = SubResource("Resource_vp20o")
+
+[node name="grass" type="Node3D" parent="ProtonScatter2"]
+script = ExtResource("27_0vpac")
+override_material = ExtResource("31_gtoci")
+path = "res://addons/proton_scatter/demos/assets/grass.tscn"
+
+[node name="small_rocks" type="Node3D" parent="ProtonScatter2"]
+script = ExtResource("27_0vpac")
+override_material = ExtResource("32_wk43p")
+path = "res://addons/proton_scatter/demos/assets/small_rock.tscn"
+
+[node name="trees" type="Node3D" parent="ProtonScatter2"]
+script = ExtResource("27_0vpac")
+path = "res://addons/proton_scatter/demos/assets/pine_tree.tscn"
+
+[node name="ScatterShape2" type="Node3D" parent="ProtonScatter2"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 43.6679, -1.61937, 0.96064)
+script = ExtResource("29_0e6ra")
+negative = true
+shape = SubResource("Resource_un471")
+
+[connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D" method="_on_right_controller_button_pressed"]
+[connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/RightController" method="_on_right_controller_button_pressed"]
+[connection signal="button_released" from="XROrigin3D/RightController" to="XROrigin3D" method="_on_right_controller_button_released"]
+[connection signal="body_entered" from="XROrigin3D/RightController/axe01/Area3D" to="XROrigin3D/RightController" method="on_area_entered"]
+[connection signal="button_pressed" from="XROrigin3D/LeftController" to="XROrigin3D" method="_on_left_controller_button_pressed"]
+[connection signal="button_pressed" from="XROrigin3D/LeftController" to="XROrigin3D/LeftController" method="_on_left_controller_button_pressed"]
+[connection signal="button_released" from="XROrigin3D/LeftController" to="XROrigin3D" method="_on_left_controller_button_released"]

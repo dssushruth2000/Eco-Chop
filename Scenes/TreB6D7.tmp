@@ -1,0 +1,75 @@
+[gd_scene load_steps=11 format=3 uid="uid://bu8r8dutwanls"]
+
+[ext_resource type="Material" uid="uid://bs3jyq3ps8j86" path="res://Materials/TreeTop.tres" id="1_4jnit"]
+[ext_resource type="AudioStream" uid="uid://7t2mm2v812f3" path="res://Materials/fallingbranch.wav" id="1_a87dg"]
+[ext_resource type="Material" uid="uid://4fxgbbhfqe6k" path="res://Materials/TreeTrunk.tres" id="1_w6qw1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_bgon8"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_mrqxu"]
+sky_material = SubResource("ProceduralSkyMaterial_bgon8")
+
+[sub_resource type="Environment" id="Environment_ooftq"]
+background_mode = 2
+sky = SubResource("Sky_mrqxu")
+tonemap_mode = 2
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_sewbs"]
+material = ExtResource("1_w6qw1")
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sg0t8"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_hkc88"]
+material = ExtResource("1_4jnit")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_iget3"]
+
+[node name="Tree" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ooftq")
+
+[node name="Trunk" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_w6qw1")
+mesh = SubResource("CylinderMesh_sewbs")
+
+[node name="Trunk" type="StaticBody3D" parent="Trunk"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trunk/Trunk"]
+shape = SubResource("CylinderShape3D_sg0t8")
+
+[node name="Trunk2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76073, 0.0458589, 2.36599)
+material_override = ExtResource("1_w6qw1")
+mesh = SubResource("CylinderMesh_sewbs")
+
+[node name="Trunk2" type="StaticBody3D" parent="Trunk2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Trunk2/Trunk2"]
+shape = SubResource("CylinderShape3D_sg0t8")
+
+[node name="Top" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0335677, 1.51525, 0)
+material_override = ExtResource("1_4jnit")
+mesh = SubResource("SphereMesh_hkc88")
+
+[node name="Top" type="StaticBody3D" parent="Top"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Top/Top"]
+shape = SubResource("SphereShape3D_iget3")
+
+[node name="Top2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.75966, 1.53364, 2.38771)
+material_override = ExtResource("1_4jnit")
+mesh = SubResource("SphereMesh_hkc88")
+
+[node name="Top2" type="StaticBody3D" parent="Top2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Top2/Top2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.148358, 0, 0)
+shape = SubResource("SphereShape3D_iget3")
+
+[node name="ChopSound" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_a87dg")

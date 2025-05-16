@@ -1,0 +1,79 @@
+[gd_scene load_steps=13 format=3 uid="uid://pp452ak1ji1y"]
+
+[ext_resource type="PackedScene" uid="uid://bu8r8dutwanls" path="res://Scenes/Tree.tscn" id="1_h1230"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_mkamr"]
+[ext_resource type="Script" path="res://Scripts/RaycastSelection.gd" id="2_dy6lh"]
+[ext_resource type="PackedScene" uid="uid://cnwp7ndjr4s8y" path="res://assests/Quest2Controllers/OculusQuest2TouchController_Left.gltf" id="3_4peo1"]
+[ext_resource type="PackedScene" uid="uid://bc8lh0rihgxvi" path="res://assests/Quest2Controllers/OculusQuest2TouchController_Right.gltf" id="4_r7inq"]
+[ext_resource type="Script" path="res://Scripts/right_controller.gd" id="4_xb6wd"]
+[ext_resource type="Script" path="res://Scripts/LineRenderer.gd" id="5_ik2kh"]
+[ext_resource type="Material" uid="uid://cok122xah8t5o" path="res://Materials/red_laser.tres" id="6_7k7w0"]
+[ext_resource type="Script" path="res://Scripts/left_controller.gd" id="7_uulea"]
+[ext_resource type="Material" uid="uid://cgo4xow407bh4" path="res://Materials/blue_laser.tres" id="9_ebqtt"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_i062y"]
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_c3t8v"]
+
+[node name="RaycastSelectionScene" type="Node3D"]
+script = ExtResource("1_mkamr")
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(-1, 0, -0.00052348, 0, 1, 0, 0.00052348, 0, -1, 0, 0, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="XROrigin3D/XRCamera3D"]
+target_position = Vector3(0, 0, -10)
+script = ExtResource("2_dy6lh")
+
+[node name="RightController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"right_hand"
+script = ExtResource("4_xb6wd")
+
+[node name="OculusQuest2TouchController_Right" parent="XROrigin3D/RightController" instance=ExtResource("4_r7inq")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="RightLaserSword" type="MeshInstance3D" parent="XROrigin3D/RightController"]
+material_override = ExtResource("6_7k7w0")
+mesh = SubResource("ImmediateMesh_i062y")
+script = ExtResource("5_ik2kh")
+points = [Vector3(0, 0, 0), Vector3(0, 0, -1)]
+startThickness = 0.01
+endThickness = 0.001
+
+[node name="RightSwordRayCast3D" type="RayCast3D" parent="XROrigin3D/RightController/RightLaserSword"]
+target_position = Vector3(0, 0, -1)
+
+[node name="LeftController" type="XRController3D" parent="XROrigin3D"]
+tracker = &"left_hand"
+script = ExtResource("7_uulea")
+
+[node name="OculusQuest2TouchController_Left" parent="XROrigin3D/LeftController" instance=ExtResource("3_4peo1")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="LeftLaserSword" type="MeshInstance3D" parent="XROrigin3D/LeftController"]
+material_override = ExtResource("9_ebqtt")
+mesh = SubResource("ImmediateMesh_c3t8v")
+script = ExtResource("5_ik2kh")
+points = [Vector3(0, 0, 0), Vector3(0, 0, -1)]
+startThickness = 0.01
+endThickness = 0.001
+
+[node name="LeftSwordRayCast3D" type="RayCast3D" parent="XROrigin3D/LeftController/LeftLaserSword"]
+target_position = Vector3(0, 0, -1)
+
+[node name="Tree" parent="." instance=ExtResource("1_h1230")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.06828, 0, -2.21151)
+
+[node name="Tree2" parent="." instance=ExtResource("1_h1230")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0680174, 0, -2.9461)
+
+[node name="Tree3" parent="." instance=ExtResource("1_h1230")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.30313, 0, 0)
+
+[node name="Tree4" parent="." instance=ExtResource("1_h1230")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.67469, 0, 0)
+
+[connection signal="button_pressed" from="XROrigin3D/RightController" to="XROrigin3D/RightController/RightLaserSword" method="_on_right_controller_button_pressed"]
+[connection signal="button_pressed" from="XROrigin3D/LeftController" to="XROrigin3D/LeftController/LeftLaserSword" method="_on_left_controller_button_pressed"]
