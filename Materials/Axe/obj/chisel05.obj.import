@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://brm2b5eapgav3"
+path="res://.godot/imported/chisel05.obj-7f12f34d35995f1035554d9315a24c0f.mesh"
+
+[deps]
+
+files=["res://.godot/imported/chisel05.obj-7f12f34d35995f1035554d9315a24c0f.mesh"]
+
+source_file="res://Materials/Axe/obj/chisel05.obj"
+dest_files=["res://.godot/imported/chisel05.obj-7f12f34d35995f1035554d9315a24c0f.mesh", "res://.godot/imported/chisel05.obj-7f12f34d35995f1035554d9315a24c0f.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

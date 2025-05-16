@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cb05gxwc4jomk"
+path="res://.godot/imported/plier01.obj-63fbd88391401f8039f3cc21c4ad1dc6.mesh"
+
+[deps]
+
+files=["res://.godot/imported/plier01.obj-63fbd88391401f8039f3cc21c4ad1dc6.mesh"]
+
+source_file="res://Materials/Axe/obj/plier01.obj"
+dest_files=["res://.godot/imported/plier01.obj-63fbd88391401f8039f3cc21c4ad1dc6.mesh", "res://.godot/imported/plier01.obj-63fbd88391401f8039f3cc21c4ad1dc6.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

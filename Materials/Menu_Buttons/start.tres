@@ -1,0 +1,9 @@
+[gd_resource type="TextMesh" load_steps=2 format=3 uid="uid://ddp0itxvpq5d7"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ctru"]
+albedo_color = Color(0, 0.878431, 0, 1)
+
+[resource]
+material = SubResource("StandardMaterial3D_4ctru")
+text = "Start"
+font_size = 10

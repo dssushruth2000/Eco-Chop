@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dht7a7fr3n1ya"
+path="res://.godot/imported/wrench02.obj-42cd3cd6dba491b08bbd3eb58b40eaf4.mesh"
+
+[deps]
+
+files=["res://.godot/imported/wrench02.obj-42cd3cd6dba491b08bbd3eb58b40eaf4.mesh"]
+
+source_file="res://Materials/Axe/obj/wrench02.obj"
+dest_files=["res://.godot/imported/wrench02.obj-42cd3cd6dba491b08bbd3eb58b40eaf4.mesh", "res://.godot/imported/wrench02.obj-42cd3cd6dba491b08bbd3eb58b40eaf4.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

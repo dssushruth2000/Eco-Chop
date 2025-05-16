@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://gas7ahvi85qg"
+path="res://.godot/imported/shears01.obj-2c8a8ac98026bf4ccfb698d789e7f4dd.mesh"
+
+[deps]
+
+files=["res://.godot/imported/shears01.obj-2c8a8ac98026bf4ccfb698d789e7f4dd.mesh"]
+
+source_file="res://Materials/Axe/obj/shears01.obj"
+dest_files=["res://.godot/imported/shears01.obj-2c8a8ac98026bf4ccfb698d789e7f4dd.mesh", "res://.godot/imported/shears01.obj-2c8a8ac98026bf4ccfb698d789e7f4dd.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c1a6qnh64dwku"
+path="res://.godot/imported/saw01.obj-1ae64d3dabe0131b8b7971846913e385.mesh"
+
+[deps]
+
+files=["res://.godot/imported/saw01.obj-1ae64d3dabe0131b8b7971846913e385.mesh"]
+
+source_file="res://Materials/Axe/obj/saw01.obj"
+dest_files=["res://.godot/imported/saw01.obj-1ae64d3dabe0131b8b7971846913e385.mesh", "res://.godot/imported/saw01.obj-1ae64d3dabe0131b8b7971846913e385.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

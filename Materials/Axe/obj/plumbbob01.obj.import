@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c1rgoqxo3bvpl"
+path="res://.godot/imported/plumbbob01.obj-62944e2eec484396040b4236f8e3029a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/plumbbob01.obj-62944e2eec484396040b4236f8e3029a.mesh"]
+
+source_file="res://Materials/Axe/obj/plumbbob01.obj"
+dest_files=["res://.godot/imported/plumbbob01.obj-62944e2eec484396040b4236f8e3029a.mesh", "res://.godot/imported/plumbbob01.obj-62944e2eec484396040b4236f8e3029a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

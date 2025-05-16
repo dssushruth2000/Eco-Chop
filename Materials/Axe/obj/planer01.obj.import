@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://b5mmf6dw4w353"
+path="res://.godot/imported/planer01.obj-a31e3080ae05b7fd33841c7a9e581341.mesh"
+
+[deps]
+
+files=["res://.godot/imported/planer01.obj-a31e3080ae05b7fd33841c7a9e581341.mesh"]
+
+source_file="res://Materials/Axe/obj/planer01.obj"
+dest_files=["res://.godot/imported/planer01.obj-a31e3080ae05b7fd33841c7a9e581341.mesh", "res://.godot/imported/planer01.obj-a31e3080ae05b7fd33841c7a9e581341.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

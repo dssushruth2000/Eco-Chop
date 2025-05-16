@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://u8qnl7rwkytd"
+path="res://.godot/imported/brace01.obj-b6658168b5814b0c1b5cce4505937f7a.mesh"
+
+[deps]
+
+files=["res://.godot/imported/brace01.obj-b6658168b5814b0c1b5cce4505937f7a.mesh"]
+
+source_file="res://Materials/Axe/obj/brace01.obj"
+dest_files=["res://.godot/imported/brace01.obj-b6658168b5814b0c1b5cce4505937f7a.mesh", "res://.godot/imported/brace01.obj-b6658168b5814b0c1b5cce4505937f7a.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

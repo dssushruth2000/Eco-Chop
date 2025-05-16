@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cj3e3bqe516tf"
+path="res://.godot/imported/gardeningfork01.obj-6d0b071cce34a5a12b64495cb557d551.mesh"
+
+[deps]
+
+files=["res://.godot/imported/gardeningfork01.obj-6d0b071cce34a5a12b64495cb557d551.mesh"]
+
+source_file="res://Materials/Axe/obj/gardeningfork01.obj"
+dest_files=["res://.godot/imported/gardeningfork01.obj-6d0b071cce34a5a12b64495cb557d551.mesh", "res://.godot/imported/gardeningfork01.obj-6d0b071cce34a5a12b64495cb557d551.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dewk6viffh7dq"
+path="res://.godot/imported/pencil01.obj-58579010e189cae691d0efbfed8eead7.mesh"
+
+[deps]
+
+files=["res://.godot/imported/pencil01.obj-58579010e189cae691d0efbfed8eead7.mesh"]
+
+source_file="res://Materials/Axe/obj/pencil01.obj"
+dest_files=["res://.godot/imported/pencil01.obj-58579010e189cae691d0efbfed8eead7.mesh", "res://.godot/imported/pencil01.obj-58579010e189cae691d0efbfed8eead7.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false

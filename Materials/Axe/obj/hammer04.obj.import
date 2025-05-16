@@ -1,0 +1,22 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cca26jh3a5kgr"
+path="res://.godot/imported/hammer04.obj-b759bb025b5cb98c04e884d0282c2fee.mesh"
+
+[deps]
+
+files=["res://.godot/imported/hammer04.obj-b759bb025b5cb98c04e884d0282c2fee.mesh"]
+
+source_file="res://Materials/Axe/obj/hammer04.obj"
+dest_files=["res://.godot/imported/hammer04.obj-b759bb025b5cb98c04e884d0282c2fee.mesh", "res://.godot/imported/hammer04.obj-b759bb025b5cb98c04e884d0282c2fee.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true
+force_disable_mesh_compression=false
