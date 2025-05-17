@@ -1,6 +1,6 @@
-# 🌲 EchoChop – A VR Tree Chopping Simulation
+# 🌲 EcoChop – A VR Tree Chopping Simulation
 
-**EchoChop** is a virtual reality (VR) simulation game built with the [Godot Engine] where players chop down trees using motion-based interactions. Designed for Oculus Quest 2 and powered by OpenXR, the game immerses you in a dynamic forest environment with realistic physics, sound effects, and environmental feedback.
+**EcoChop** is a virtual reality (VR) simulation game built with the [Godot Engine] where players chop down trees using motion-based interactions. Designed for Oculus Quest 2 and powered by OpenXR, the game immerses you in a dynamic forest environment with realistic physics, sound effects, and environmental feedback.
 
 ---
 ## 🎥 Gameplay Demo
@@ -60,7 +60,7 @@
 
 ## 🛠 How It Was Built
 
-EchoChop was built using the Godot Engine with XR support for Oculus Quest 2. Key highlights:
+Eco-Chop was built using the Godot Engine with XR support for Oculus Quest 2. Key highlights:
 
 - **Scene-Based Architecture:** Each tree and UI element is a modular scene.
 - **Motion-Based Movement:** Player locomotion is triggered by natural hand swinging and joystick control.
@@ -77,7 +77,7 @@ EchoChop was built using the Godot Engine with XR support for Oculus Quest 2. Ke
 1. **Clone the Repository**
 
    ```bash
-   git clone https://github.com/yourusername/echochop.git
+   git clone https://github.com/dssushruth2000/Eco-Chop.git
    ```
 2. **Open in Godot Engine**
 
